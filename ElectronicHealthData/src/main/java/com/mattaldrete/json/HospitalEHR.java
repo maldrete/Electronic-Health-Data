@@ -42,7 +42,7 @@ public class HospitalEHR {
 		System.out.println(hospitalsSorted);
 		
 		
-		String fileName = "ehr.csv";
+		String fileName = "Pct of Hospitals Adopted Basic EHR.csv";
 		
 		convertToCSV(hospitalsSorted, fileName);
 
@@ -130,10 +130,10 @@ public class HospitalEHR {
 			FileWriter fw = new FileWriter(fileName);
 			BufferedWriter bw = new BufferedWriter(fw);
 			PrintWriter pw = new PrintWriter(bw);
-
 			pw.println("State\t" + "EHR %\t" + "Period\t");
 			for (StateHospital sh : data) {
-				pw.println(sh.getRegion() + "\t" + sh.getPct_hospitals_basic_ehr_notes() + "\t" + sh.getPeriod());
+				
+				pw.println(sh.getRegion() + "\t" + (Math.round((sh.getPct_hospitals_basic_ehr_notes()*100))) + "%\t" + sh.getPeriod());
 			}
 
 			pw.flush();
